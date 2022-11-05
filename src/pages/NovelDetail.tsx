@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
+import KeywordSearch from "../components/KeywordSearch";
 import NovelCard from "../components/NovelCard";
 import NovelDetailItem from "../components/NovelDetailItem";
 
@@ -52,6 +53,19 @@ function NovelDetail() {
               ></TextField>
               <Box display={"flex"} justifyContent="flex-end" mt={2}>
                 <Button variant="contained">작성</Button>
+              </Box>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12}>
+          <Card>
+            <CardContent>
+              <Box display={"flex"} justifyContent="flex-start" mb={2}>
+                <Typography color="text.secondary">키워드 추가하기</Typography>
+              </Box>
+              <KeywordSearch addable />
+              <Box display={"flex"} justifyContent="flex-end" mt={2}>
+                <Button variant="contained">추가</Button>
               </Box>
             </CardContent>
           </Card>
