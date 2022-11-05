@@ -15,6 +15,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import KeywordSearch from "../components/KeywordSearch";
 import NovelCard from "../components/NovelCard";
 
+
 export type mainType = "main" | "search" | "keyword" | "keywordSearch";
 
 function Main({ type }: { type: mainType }) {
@@ -79,7 +80,7 @@ function Main({ type }: { type: mainType }) {
               .fill(0)
               .map((_, i) => (
                 <Link to={`/keyword/search/${`키워드${i}`}`}>
-                  <Chip onClick={() => {}} label={`키워드${i}`}></Chip>
+                  <Chip onClick={() => { }} label={`키워드${i}`}></Chip>
                 </Link>
               ))}
             <Link
@@ -106,7 +107,7 @@ function Main({ type }: { type: mainType }) {
         {type === "keywordSearch" && `키워드 ${word}에 대한 검색 결과`}
       </Typography>
       {/* </Box> */}
-      
+
       <Grid container spacing={2}>
         {Array(10)
           .fill(0)
@@ -118,8 +119,8 @@ function Main({ type }: { type: mainType }) {
                 i % 3 === 0
                   ? "한 단어 (5자)"
                   : i % 3 === 1
-                  ? "한 문장 (30자)"
-                  : "한 문단 (200자)"
+                    ? "한 문장 (30자)"
+                    : "한 문단 (200자)"
               }
               maxCount={300}
               currentCount={i * 10}
@@ -135,73 +136,79 @@ function Main({ type }: { type: mainType }) {
       </Typography>
       <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
-          <Card
-            sx={{
-              cursor: "pointer",
-              minWidth: 275,
-              background: "#EFD7F3",
-              border: "solid",
-              borderRadius: 5,
-              color: "black",
-              height: "100%",
-            }}
-          >
-            <CardContent>
-              <Typography variant="h5" component="div">
-                한 단어 이어쓰기
-              </Typography>
-              <Typography mb={3} variant="body2">
-                5자 이내의 내용을 릴레이로 이어서 작성합니다.
-              </Typography>
-              <img height='90' src="wordRelay.png" />
-            </CardContent>
-          </Card>
+          <Link to='/novel-kind/word'>
+            <Card
+              sx={{
+                cursor: "pointer",
+                minWidth: 275,
+                background: "#EFD7F3",
+                border: "solid",
+                borderRadius: 5,
+                color: "black",
+                height: "100%",
+              }}
+            >
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  한 단어 이어쓰기
+                </Typography>
+                <Typography mb={3} variant="body2">
+                  5자 이내의 내용을 릴레이로 이어서 작성합니다.
+                </Typography>
+                <img height='90' src="wordRelay.png" />
+              </CardContent>
+            </Card>
+          </Link>
         </Grid>
         <Grid item xs={12} md={4}>
-          <Card
-            sx={{
-              cursor: "pointer",
-              minWidth: 275,
-              background: "#EFD7F3",
-              border: "solid",
-              borderRadius: 5,
-              color: "black",
-              height: "100%",
-            }}
-          >
-            <CardContent>
-              <Typography variant="h5" component="div">
-                한 문장 이어쓰기
-              </Typography>
-              <Typography mb={3} variant="body2">
-                30자 이내의 내용을 릴레이로 이어서 작성합니다.
-              </Typography>
-              <img height='90' src="sentenceRalay.png" />
-            </CardContent>
-          </Card>
+          <Link to='/novel-kind/sentence'>
+            <Card
+              sx={{
+                cursor: "pointer",
+                minWidth: 275,
+                background: "#EFD7F3",
+                border: "solid",
+                borderRadius: 5,
+                color: "black",
+                height: "100%",
+              }}
+            >
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  한 문장 이어쓰기
+                </Typography>
+                <Typography mb={3} variant="body2">
+                  30자 이내의 내용을 릴레이로 이어서 작성합니다.
+                </Typography>
+                <img height='90' src="sentenceRalay.png" />
+              </CardContent>
+            </Card>
+          </Link>
         </Grid>
         <Grid item xs={12} md={4}>
-          <Card
-            sx={{
-              cursor: "pointer",
-              minWidth: 275,
-              background: "#EFD7F3",
-              border: "solid",
-              borderRadius: 5,
-              color: "black",
-              height: "100%",
-            }}
-          >
-            <CardContent>
-              <Typography variant="h5" component="div">
-                한 문단 이어쓰기
-              </Typography>
-              <Typography mb={3} variant="body2">
-                200자 이내의 내용을 릴레이로 이어서 작성합니다.
-              </Typography>
-              <img height='90' src="paragraphRelay.png" />
-            </CardContent>
-          </Card>
+          <Link to='/novel-kind/paragraph'>
+            <Card
+              sx={{
+                cursor: "pointer",
+                minWidth: 275,
+                background: "#EFD7F3",
+                border: "solid",
+                borderRadius: 5,
+                color: "black",
+                height: "100%",
+              }}
+            >
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  한 문단 이어쓰기
+                </Typography>
+                <Typography mb={3} variant="body2">
+                  200자 이내의 내용을 릴레이로 이어서 작성합니다.
+                </Typography>
+                <img height='90' src="paragraphRelay.png" />
+              </CardContent>
+            </Card>
+          </Link>
         </Grid>
       </Grid>
     </Box>
