@@ -66,7 +66,7 @@ function NovelDetail() {
               <Box display={"flex"} justifyContent="flex-start" mb={2}>
                 <Typography color="text.secondary">키워드 추가하기</Typography>
               </Box>
-              <KeywordSearch addable />
+              {/* <KeywordSearch addable useForm={usefore} /> */}
               <Box display={"flex"} justifyContent="flex-end" mt={2}>
                 <Button variant="contained">추가</Button>
               </Box>
