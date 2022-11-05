@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button, TextField, Stack,Container, Typography, Box, Grid, Fab, Icon } from '@mui/material';
+import { Button, TextField, Stack, Container, Typography, Box, Grid, Fab, Icon } from '@mui/material';
 import InputAdornment from '@mui/material/InputAdornment';
 
 type CreateProps = {
-  name: string;
+    name: string;
 };
 
 const Create: React.FC<CreateProps> = ({ name }) => (
@@ -22,34 +22,34 @@ const Create: React.FC<CreateProps> = ({ name }) => (
                     <Typography>키워드</Typography>
                 </Grid>
                 <Grid item xs={10}>
-                    <TextField id="outlined-basic" sx={{width:"100%"}} variant="outlined" />
+                    <TextField id="outlined-basic" sx={{ width: "100%" }} variant="outlined" />
                     <Icon>add_circle_outline</Icon>
                 </Grid>
 
                 <Grid item xs={2}>
-                <Typography>최대 릴레이 개수</Typography>
+                    <Typography>최대 릴레이 개수</Typography>
                 </Grid>
                 <Grid item xs={10}>
-                <TextField
-                    id="outlined-number"
-                    InputProps={{
-                        endAdornment: <InputAdornment position="start">개</InputAdornment>,
-                      }}
-                    type="number"
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
+                    <TextField
+                        id="outlined-number"
+                        InputProps={{
+                            endAdornment: <InputAdornment position="start">개</InputAdornment>,
+                        }}
+                        type="number"
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
                     />
                 </Grid>
 
                 <Grid item xs={2}>
-                <Typography>시작 스토리</Typography>
+                    <Typography>시작 스토리</Typography>
                 </Grid>
                 <Grid item xs={10}>
-                    <TextField id="outlined-basic" sx={{width:"100%"}} variant="outlined" />
+                    <TextField id="outlined-basic" sx={{ width: "100%" }} variant="outlined" />
                 </Grid>
             </Grid>
-            <Button sx={{width:"30%", marginTop:"30px"}} variant="contained">등록</Button>
+            <Button sx={{ width: "30%", marginTop: "30px" }} variant="contained">등록</Button>
         </Container>
     </div>
 );
