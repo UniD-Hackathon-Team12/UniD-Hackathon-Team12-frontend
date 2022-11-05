@@ -11,9 +11,14 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { useForm } from "react-hook-form";
+import KeywordSearch from "../components/KeywordSearch";
 import NovelCard from "../components/NovelCard";
 
-function Main() {
+export type mainType = "main" | "search" | "keyword" | "keywordSearch";
+
+function Main({ type }: { type: mainType }) {
+  const useFormReturn = useForm({ defaultValues: { keyword: { value: "" } } });
   return (
     <Box
       paddingX={3}
@@ -25,12 +30,16 @@ function Main() {
     >
       <Card sx={{ width: "100%" }}>
         <Box paddingX={3} pt={3} display="flex" gap={3}>
-          <TextField
-            id="standard-basic"
-            label="검색하기"
-            variant="standard"
-            fullWidth
-          />
+          {type === "keyword" || type === "keywordSearch" ? (
+            <KeywordSearch useForm={useFormReturn} id="keyword" />
+          ) : (
+            <TextField
+              id="standard-basic"
+              label="검색하기"
+              variant="standard"
+              fullWidth
+            />
+          )}
           <Button variant="contained">
             <Icon>search</Icon>
           </Button>
@@ -52,11 +61,18 @@ function Main() {
             .map((_, i) => (
               <Chip onClick={() => {}} label={`키워드${i}`}></Chip>
             ))}
+          <Button variant="contained" sx={{ marginLeft: "12px" }}>
+            {type === "keyword" || type === "keywordSearch"
+              ? "내용 검색으로"
+              : "키워드 검색으로"}
+          </Button>
         </Box>
       </Card>
 
       <Typography color="#9A44AA" mt={5}>
-        인기 릴레이 소설
+        {(type === "main" || type === "keyword") && "인기 릴레이 소설"}
+        {type === "search" && `~에 대한 검색 결과`}
+        {type === "keywordSearch" && `키워드 ~에 대한 검색 결과`}
       </Typography>
       <Grid container spacing={2}>
         {Array(10)

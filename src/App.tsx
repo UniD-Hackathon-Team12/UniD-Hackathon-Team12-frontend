@@ -23,7 +23,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <div className="App">
         <NavBar />
-        <Main />
+        <Main type="keywordSearch" />
       </div>
     </ThemeProvider>
   );
