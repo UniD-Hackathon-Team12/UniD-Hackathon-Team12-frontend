@@ -20,6 +20,7 @@ export interface NovelCardProps {
   currentCount: number;
   maxCount: number;
   isFinished?: boolean;
+  isLike?: boolean;
 }
 
 function NovelCard(props: NovelCardProps) {
@@ -27,6 +28,7 @@ function NovelCard(props: NovelCardProps) {
     title,
     keyword,
     like,
+    isLike = false,
     type,
     currentCount,
     maxCount,
@@ -49,7 +51,7 @@ function NovelCard(props: NovelCardProps) {
               {type}
             </Typography>
             <Chip
-              icon={<Icon>favorite</Icon>}
+              icon={<Icon>{isLike ? "favorite" : "favorite_border"}</Icon>}
               label={like}
               variant="outlined"
               color="error"
@@ -73,7 +75,7 @@ function NovelCard(props: NovelCardProps) {
               <Chip label={`${currentCount} / ${maxCount}`} color="primary" />
             )}
             {keyword.map((k, i) => (
-              <Chip label={k}></Chip>
+              <Chip label={k} onClick={() => {}}></Chip>
             ))}
           </Box>
         </CardContent>
