@@ -17,7 +17,6 @@ import InputAdornment from "@mui/material/InputAdornment";
 function Create() {
     return (
         <div>
-            {/* <div>Hello, {name}</div> */}
             <Container fixed maxWidth="lg" sx={{marginTop:"50px"}}>
                 <Grid container alignItems="flex-start" spacing={5}>
                     <Grid item xs={2} container direction="row" justifyContent="flex-end">
