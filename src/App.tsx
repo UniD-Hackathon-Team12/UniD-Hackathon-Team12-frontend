@@ -8,13 +8,24 @@ import MyPage from "./pages/MyPage";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Create from "./pages/Create";
+import { createTheme, ThemeProvider } from "@mui/material";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#E0BFE6",
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <NavBar />
-      <Create />
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <NavBar />
+        <Main />
+      </div>
+    </ThemeProvider>
   );
 }
 
