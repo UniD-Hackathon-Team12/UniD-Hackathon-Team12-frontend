@@ -45,6 +45,32 @@ function NavBar() {
                 회원가입
               </Button>
             </Link>
+{/* 
+            <Link to="/mypage">
+              <Button
+                size="large"
+                style={{
+                  marginRight: "10px",
+                  background: "white",
+                  border: "solid",
+                  borderRadius: 10,
+                  color: "black",
+                }}
+              >
+                마이 페이지
+              </Button>
+            </Link>
+            <Button
+              size="large"
+              style={{
+                background: "white",
+                border: "solid",
+                borderRadius: 10,
+                color: "black",
+              }}
+            >
+              로그아웃
+            </Button> */}
           </Box>
         </Toolbar>
       </AppBar>
