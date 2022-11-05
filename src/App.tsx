@@ -26,7 +26,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <div className="App">
         <NavBar />
-        <Main />
+        <NovelDetail />
       </div>
     </ThemeProvider>
   );

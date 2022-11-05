@@ -21,7 +21,7 @@ function Signup() {
                         <TextField id="outlined-basic" sx={{width:"60%"}} variant="outlined" />
                     </Grid>
                 </Grid>
-                <Button sx={{background:"#E0BFE6", width:"50%", marginTop:"80px"}} variant="contained">회원가입</Button>
+                <Button size="large" sx={{background:"#E0BFE6", width:"50%", marginTop:"80px"}} variant="contained">회원가입</Button>
             </Container>
         </div>
     );
