@@ -180,7 +180,7 @@ function Main({ type }: { type: mainType }) {
                 <Typography mb={3} variant="body2">
                   30자 이내의 내용을 릴레이로 이어서 작성합니다.
                 </Typography>
-                <img height='90' src="sentenceRalay.png" />
+                <img style={{width:'25vw'}} src="sentenceRelay.png" />
               </CardContent>
             </Card>
           </Link>
