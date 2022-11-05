@@ -2,6 +2,7 @@ import * as React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
+import { useController, UseFormReturn } from "react-hook-form";
 
 interface Film {
   title: string;
@@ -18,12 +19,21 @@ function sleep(delay = 0) {
 
 export default function KeywordSearch({
   addable = false,
+  id = "keywordSearch",
+  useForm,
 }: {
   addable?: boolean;
+  id?: string;
+  useForm: UseFormReturn<any>;
 }) {
   const [open, setOpen] = React.useState(false);
   const [options, setOptions] = React.useState<readonly Film[]>([]);
   const loading = open && options.length === 0;
+  const { field } = useController({
+    control: useForm.control,
+    name: id,
+  });
+  const { onChange, name, value } = field;
 
   React.useEffect(() => {
     let active = true;
@@ -50,11 +60,12 @@ export default function KeywordSearch({
       setOptions([]);
     }
   }, [open]);
-
+  // console.log(value);
   return (
     <Autocomplete
-      id="asynchronous-demo"
+      id={name}
       fullWidth
+      value={value.value || ""}
       open={open}
       onOpen={() => {
         setOpen(true);
@@ -69,9 +80,13 @@ export default function KeywordSearch({
       options={options}
       loading={loading}
       freeSolo={addable}
+      onChange={(e, v) =>
+        onChange({ value: typeof v === "string" ? v : v?.title || "" })
+      }
       renderInput={(params) => (
         <TextField
           {...params}
+          onChange={(e) => onChange({ value: e.target.value })}
           fullWidth
           label="키워드"
           InputProps={{

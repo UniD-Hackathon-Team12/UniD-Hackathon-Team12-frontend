@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   TextField,
@@ -11,58 +11,139 @@ import {
   Icon,
   InputLabel,
   FormControlLabel,
+  Input,
+  FormControl,
+  Select,
+  MenuItem,
 } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
+import { useFieldArray, useForm } from "react-hook-form";
+import KeywordSearch from "../components/KeywordSearch";
 
 function Create() {
-    return (
-        <div>
-            {/* <div>Hello, {name}</div> */}
-            <Container fixed maxWidth="lg" sx={{marginTop:"50px"}}>
-                <Grid container alignItems="flex-start" spacing={5}>
-                    <Grid item xs={2} container direction="row" justifyContent="flex-end">
-                        <Typography>카테고리</Typography>
-                    </Grid>
-                    <Grid item xs={10} container direction="row" justifyContent="flex-start">
-                        <Typography>한글자</Typography>
-                    </Grid>
+  const [KeywordList, setKeywordList] = useState([]);
+  const useFormReturn = useForm();
+  const { control, register, handleSubmit } = useFormReturn;
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "keyword",
+  });
+  return (
+    <form onSubmit={handleSubmit((d) => console.log(d))}>
+      {/* <div>Hello, {name}</div> */}
+      <Container fixed maxWidth="lg" sx={{ marginTop: "50px" }}>
+        <Grid container alignItems="flex-start" spacing={5}>
+          <Grid item xs={2} container direction="row" justifyContent="flex-end">
+            <Typography>카테고리</Typography>
+          </Grid>
+          <Grid
+            item
+            xs={10}
+            container
+            direction="row"
+            justifyContent="flex-start"
+          >
+            <Select {...register("type")} defaultValue={5}>
+              <MenuItem value={5}>한 글자 (5자)</MenuItem>
+              <MenuItem value={30}>한 문장 (30자)</MenuItem>
+              <MenuItem value={200}>한 문단 (200자)</MenuItem>
+            </Select>
+          </Grid>
 
-                    <Grid item xs={2} container direction="row" justifyContent="flex-end">
-                        <Typography>키워드</Typography>
-                    </Grid>
-                    <Grid item xs={10} container direction="row" justifyContent="flex-start">
-                        <TextField id="outlined-basic" sx={{width:"100%"}} variant="outlined" />
-                        <Icon>add_circle_outline</Icon>
-                    </Grid>
+          <Grid item xs={2} container direction="row" justifyContent="flex-end">
+            <Typography>키워드</Typography>
+          </Grid>
+          <Grid item xs={10}>
+            <Box
+              display={"flex"}
+              flexDirection="column"
+              alignItems={"center"}
+              width="full"
+              gap={1}
+            >
+              {fields.map(({ id }, i) => (
+                <Box
+                  width={"100%"}
+                  display="flex"
+                  justifyContent={"center"}
+                  alignItems={"center"}
+                  gap={2}
+                  key={id}
+                >
+                  <KeywordSearch
+                    key={id}
+                    id={`keyword.${i}`}
+                    useForm={useFormReturn}
+                    addable
+                  />
+                  <Fab
+                    color="primary"
+                    onClick={() => remove(i)}
+                    sx={{ flexShrink: 0 }}
+                  >
+                    <Icon>delete</Icon>
+                  </Fab>
+                </Box>
+              ))}
+              <Fab color="primary" onClick={() => append({ value: "" })}>
+                <Icon>add</Icon>
+              </Fab>
+            </Box>
+          </Grid>
 
-                    <Grid item xs={2} container direction="row" justifyContent="flex-end">
-                    <Typography>최대 릴레이 개수</Typography>
-                    </Grid>
-                    <Grid item xs={10} container direction="row" justifyContent="flex-start">
-                        <TextField
-                            id="outlined-number"
-                            InputProps={{
-                                endAdornment: <InputAdornment position="start">개</InputAdornment>,
-                            }}
-                            type="number"
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                            />
-                    </Grid>
+          <Grid item xs={2} container direction="row" justifyContent="flex-end">
+            <Typography>최대 릴레이 개수</Typography>
+          </Grid>
+          <Grid
+            item
+            xs={10}
+            container
+            direction="row"
+            justifyContent="flex-start"
+          >
+            <TextField
+              {...register("maxCount")}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="start">개</InputAdornment>
+                ),
+              }}
+              type="number"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </Grid>
 
-                    <Grid item xs={2} container direction="row" justifyContent="flex-end">
-                    <Typography>시작 스토리</Typography>
-                    </Grid>
-                    <Grid item xs={10} container direction="row" justifyContent="flex-start">
-                    <TextField sx={{width:"100%"}} id="outlined-multiline-static" multiline rows={4}/>
-                    </Grid>
-                </Grid>
-                <Button sx={{background:"#E0BFE6", width:"30%", marginTop:"30px"}} variant="contained">등록</Button>
-            </Container>
-        </div>
-    );
-  }
-  
+          <Grid item xs={2} container direction="row" justifyContent="flex-end">
+            <Typography>시작 스토리</Typography>
+          </Grid>
+          <Grid
+            item
+            xs={10}
+            container
+            direction="row"
+            justifyContent="flex-start"
+          >
+            <TextField
+              sx={{ width: "100%" }}
+              {...register("firstStory")}
+              id="outlined-multiline-static"
+              multiline
+              rows={4}
+            />
+          </Grid>
+        </Grid>
+        <Button
+          sx={{ background: "#E0BFE6", width: "30%", marginTop: "30px" }}
+          variant="contained"
+          type="submit"
+        >
+          등록
+        </Button>
+      </Container>
+    </form>
+  );
+}
+
 export default Create;
-

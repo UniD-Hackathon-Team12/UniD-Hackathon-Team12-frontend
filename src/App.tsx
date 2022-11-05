@@ -12,6 +12,8 @@ import Create from "./pages/Create";
 function App() {
   return (
     <div className="App">
+      <NavBar />
+      <Create />
     </div>
   );
 }
