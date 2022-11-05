@@ -15,7 +15,7 @@ function NavBar() {
           }}
         >
           <Link to="/">
-            <img height="90" src="/logo.png" />
+            <img style={{width:'35vw'}} src="/logo2.png" />
           </Link>
           <Box>
             <Link to="/login">
