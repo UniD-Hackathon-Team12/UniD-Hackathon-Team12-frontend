@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
+import { Link } from 'react-router-dom';
 
 export interface NovelCardProps {
   title: string;
@@ -57,7 +58,7 @@ function NovelCard(props: NovelCardProps) {
               label={like}
               variant="outlined"
               color="error"
-              onClick={() => {}}
+              onClick={() => { }}
             />
           </Box>
           <Typography variant="h5">{title}</Typography>
@@ -77,17 +78,17 @@ function NovelCard(props: NovelCardProps) {
               <Chip label={`${currentCount} / ${maxCount}`} color="primary" />
             )}
             {keyword.map((k, i) => (
-              <Chip label={k} onClick={() => {}}></Chip>
+              <Chip label={k} onClick={() => { }}></Chip>
             ))}
           </Box>
         </CardContent>
         {!forDetail && (
           <CardActions>
-            <Button>자세히 보기</Button>
+            <Link to='/novel-detail'><Button> 자세히 보기</Button></Link>
           </CardActions>
         )}
       </Card>
-    </Grid>
+    </Grid >
   );
 }
 

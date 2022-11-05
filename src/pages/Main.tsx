@@ -9,6 +9,7 @@ import {
   Icon,
   TextField,
   Typography,
+  Link,
 } from "@mui/material";
 import React from "react";
 import NovelCard from "../components/NovelCard";
@@ -50,7 +51,7 @@ function Main() {
           {Array(5)
             .fill(0)
             .map((_, i) => (
-              <Chip onClick={() => {}} label={`키워드${i}`}></Chip>
+              <Chip onClick={() => { }} label={`키워드${i}`}></Chip>
             ))}
         </Box>
       </Card>
@@ -69,8 +70,8 @@ function Main() {
                 i % 3 === 0
                   ? "5자"
                   : i % 3 === 1
-                  ? "한 문장 (30자)"
-                  : "한 문단 (200자)"
+                    ? "한 문장 (30자)"
+                    : "한 문단 (200자)"
               }
               maxCount={300}
               currentCount={i * 10}
