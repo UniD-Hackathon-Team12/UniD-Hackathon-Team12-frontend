@@ -9,6 +9,7 @@ import {
   Icon,
   TextField,
   Typography,
+  Link,
 } from "@mui/material";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -59,7 +60,7 @@ function Main({ type }: { type: mainType }) {
           {Array(5)
             .fill(0)
             .map((_, i) => (
-              <Chip onClick={() => {}} label={`키워드${i}`}></Chip>
+              <Chip onClick={() => { }} label={`키워드${i}`}></Chip>
             ))}
           <Button variant="contained" sx={{ marginLeft: "12px" }}>
             {type === "keyword" || type === "keywordSearch"
@@ -85,8 +86,8 @@ function Main({ type }: { type: mainType }) {
                 i % 3 === 0
                   ? "5자"
                   : i % 3 === 1
-                  ? "한 문장 (30자)"
-                  : "한 문단 (200자)"
+                    ? "한 문장 (30자)"
+                    : "한 문단 (200자)"
               }
               maxCount={300}
               currentCount={i * 10}
