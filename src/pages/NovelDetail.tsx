@@ -13,6 +13,7 @@ import React, { useRef } from "react";
 import KeywordSearch from "../components/KeywordSearch";
 import NovelCard from "../components/NovelCard";
 import NovelDetailItem from "../components/NovelDetailItem";
+import { Link } from 'react-router-dom';
 
 function NovelDetail() {
   const lastRef = useRef<any>(null);
@@ -88,7 +89,7 @@ function NovelDetail() {
             if (lastRef?.current) lastRef.current.scrollIntoViewIfNeeded();
           }}
         >
-          <Icon>edit</Icon>
+          <Link to='/create'><Icon>edit</Icon></Link>
         </Fab>
       </Box>
     </div>
