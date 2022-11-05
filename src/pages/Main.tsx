@@ -8,6 +8,7 @@ import {
   Icon,
   TextField,
   Typography,
+  Container,
 } from "@mui/material";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -26,14 +27,7 @@ function Main({ type }: { type: mainType }) {
   const { word = null } = a;
   const navigate = useNavigate();
   return (
-    <Box
-      paddingX={3}
-      my={3}
-      gap={3}
-      display="flex"
-      flexDirection={"column"}
-      alignItems="flex-start"
-    >
+    <Container sx={{ marginTop: "50px" }}>
       <Card sx={{ width: "100%" }}>
         <form
           onSubmit={useFormReturn.handleSubmit((t) => {
@@ -101,7 +95,7 @@ function Main({ type }: { type: mainType }) {
       </Card>
 
       {/* <Box display="flex" alignItems="flex-start" mt={5} p={2} sx={{width:"100%", background:"#E0BFE6"}}> */}
-      <Typography mt={5} variant="h5" color="#9A44AA" >
+      <Typography align="left" mt={10} mb={5} variant="h5" color="#9A44AA" >
         {(type === "main" || type === "keyword") && "인기 릴레이 소설"}
         {type === "search" && `${word}에 대한 검색 결과`}
         {type === "keywordSearch" && `키워드 ${word}에 대한 검색 결과`}
@@ -131,7 +125,7 @@ function Main({ type }: { type: mainType }) {
           ))}
       </Grid>
 
-      <Typography mt={5} variant="h5" color="#9A44AA" >
+      <Typography align="left" mt={10} mb={5} variant="h5" color="#9A44AA" >
         릴레이 소설 작성하기
       </Typography>
       <Grid container spacing={2}>
@@ -155,7 +149,7 @@ function Main({ type }: { type: mainType }) {
                 <Typography mb={3} variant="body2">
                   5자 이내의 내용을 릴레이로 이어서 작성합니다.
                 </Typography>
-                <img height='90' src="wordRelay.png" />
+                <img style={{width:'100%'}} src="wordRelay.png" />
               </CardContent>
             </Card>
           </Link>
@@ -180,7 +174,7 @@ function Main({ type }: { type: mainType }) {
                 <Typography mb={3} variant="body2">
                   30자 이내의 내용을 릴레이로 이어서 작성합니다.
                 </Typography>
-                <img height='90' src="sentenceRalay.png" />
+                <img style={{width:'100%'}} src="sentenceRelay.png" />
               </CardContent>
             </Card>
           </Link>
@@ -205,13 +199,13 @@ function Main({ type }: { type: mainType }) {
                 <Typography mb={3} variant="body2">
                   200자 이내의 내용을 릴레이로 이어서 작성합니다.
                 </Typography>
-                <img height='90' src="paragraphRelay.png" />
+                <img style={{width:'100%'}} src="paragraphRelay.png" />
               </CardContent>
             </Card>
           </Link>
         </Grid>
       </Grid>
-    </Box>
+    </Container>
   );
 }
 

@@ -29,9 +29,9 @@ function Create() {
     control,
     name: "keyword",
   });
+
   return (
     <form onSubmit={handleSubmit((d) => console.log(d))}>
-      {/* <div>Hello, {name}</div> */}
       <Container fixed maxWidth="lg" sx={{ marginTop: "50px" }}>
         <Grid container alignItems="flex-start" spacing={5}>
           <Grid item xs={2} container direction="row" justifyContent="flex-end">
@@ -86,6 +86,7 @@ function Create() {
                   </Fab>
                 </Box>
               ))}
+              
               <Fab color="primary" onClick={() => append({ value: "" })}>
                 <Icon>add</Icon>
               </Fab>
