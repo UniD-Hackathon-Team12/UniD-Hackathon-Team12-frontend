@@ -2,20 +2,23 @@ import {
   Button,
   Card,
   CardContent,
+  Fab,
   Grid,
+  Icon,
   TextField,
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useRef } from "react";
 import KeywordSearch from "../components/KeywordSearch";
 import NovelCard from "../components/NovelCard";
 import NovelDetailItem from "../components/NovelDetailItem";
 
 function NovelDetail() {
+  const lastRef = useRef<any>(null);
   return (
     <div>
-      <Grid container spacing={2} paddingX={3} marginY={3}>
+      <Grid container spacing={2} paddingX={3} marginY={8}>
         <NovelCard
           title={`첫번째 문장입니다 123123`}
           keyword={["키워드1", "키워드2", "키워드3"]}
@@ -57,7 +60,7 @@ function NovelDetail() {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} ref={lastRef}>
           <Card>
             <CardContent>
               <Box display={"flex"} justifyContent="flex-start" mb={2}>
@@ -71,6 +74,23 @@ function NovelDetail() {
           </Card>
         </Grid>
       </Grid>
+      <Box
+        position={"sticky"}
+        bottom={30}
+        display="flex"
+        justifyContent={"flex-end"}
+        pr={3}
+      >
+        <Fab
+          color="primary"
+          aria-label="add"
+          onClick={() => {
+            if (lastRef?.current) lastRef.current.scrollIntoViewIfNeeded();
+          }}
+        >
+          <Icon>edit</Icon>
+        </Fab>
+      </Box>
     </div>
   );
 }
