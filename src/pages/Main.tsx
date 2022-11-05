@@ -2,6 +2,8 @@ import {
   Box,
   Button,
   Card,
+  CardContent,
+  CardActions,
   Chip,
   Grid,
   Icon,
@@ -13,8 +15,8 @@ import NovelCard from "../components/NovelCard";
 
 function Main() {
   return (
-    <Box paddingX={3} my={3} gap={3} display="flex" flexDirection={"column"}>
-      <Card>
+    <Box paddingX={3} my={3} gap={3} display="flex" flexDirection={"column"} alignItems="flex-start">
+      <Card sx={{width:"100%"}}>
         <Box paddingX={3} pt={3} display="flex" gap={3}>
           <TextField
             id="standard-basic"
@@ -45,6 +47,8 @@ function Main() {
             ))}
         </Box>
       </Card>
+
+      <Typography color="#9A44AA" mt={5}>인기 릴레이 소설</Typography>
       <Grid container spacing={2}>
         {Array(10)
           .fill(0)
@@ -66,6 +70,55 @@ function Main() {
               isLike={i % 2 === 1}
             />
           ))}
+      </Grid>
+
+      <Typography color="#9A44AA" mt={5}>릴레이 소설 작성하기</Typography>
+      <Grid container spacing={2}>
+        <Grid item xs={4}>
+          <Card sx={{ cursor:"pointer", minWidth: 275, background:"white", border:"solid", borderRadius:5, color:"black"}}>
+            <CardContent>
+              <Typography variant="h5" component="div">
+              한 단어 이어쓰기
+              </Typography>
+              <Typography variant="body2">
+                5자 이내의 내용을 릴레이로 이어서 작성합니다.
+              </Typography>
+              <Typography variant="h5" component="div">
+                WORD RELAY
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={4}>
+          <Card sx={{ cursor:"pointer", minWidth: 275, background:"white", border:"solid", borderRadius:5, color:"black"}}>
+            <CardContent>
+              <Typography variant="h5" component="div">
+                한 문장 이어쓰기
+              </Typography>
+              <Typography variant="body2">
+                30자 이내의 내용을 릴레이로 이어서 작성합니다.
+              </Typography>
+              <Typography variant="h5" component="div">
+                SENTENCE RELAY
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={4}>
+          <Card sx={{ cursor:"pointer", minWidth: 275, background:"white", border:"solid", borderRadius:5, color:"black"}}>
+            <CardContent>
+              <Typography variant="h5" component="div">
+                한 문단 이어쓰기
+              </Typography>
+              <Typography variant="body2">
+                200자 이내의 내용을 릴레이로 이어서 작성합니다.
+              </Typography>
+              <Typography variant="h5" component="div">
+                PARAGRAPH RELAY
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
       </Grid>
     </Box>
   );
