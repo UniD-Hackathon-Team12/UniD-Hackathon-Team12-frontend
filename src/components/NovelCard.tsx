@@ -83,7 +83,7 @@ function NovelCard(props: NovelCardProps) {
         </CardContent>
         {!forDetail && (
           <CardActions>
-            <Button>자세히 보기</Button>
+            <Button sx={{color:"#9A44AA"}}>자세히 보기</Button>
           </CardActions>
         )}
       </Card>

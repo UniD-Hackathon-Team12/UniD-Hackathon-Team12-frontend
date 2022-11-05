@@ -41,3 +41,8 @@
   font-family: "pencil_sketch";
   src: url("./fonts/pencil_sketch.ttf");
 }
+
+@font-face {
+  font-family: "neverland_l";
+  src: url("./fonts/neverland_l.ttf");
+}
