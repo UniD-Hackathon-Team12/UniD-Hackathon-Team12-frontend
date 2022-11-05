@@ -21,9 +21,15 @@ import { useFieldArray, useForm } from "react-hook-form";
 import KeywordSearch from "../components/KeywordSearch";
 
 function Create() {
-
   const [KeywordList, setKeywordList] = useState([]);
-  const useFormReturn = useForm();
+  const useFormReturn = useForm({
+    defaultValues: {
+      keyword: [{ value: "" }],
+      type: 5,
+      maxCount: 30,
+      firstStory: "",
+    },
+  });
   const { control, register, handleSubmit } = useFormReturn;
   const { fields, append, remove } = useFieldArray({
     control,
@@ -86,10 +92,11 @@ function Create() {
                   </Fab>
                 </Box>
               ))}
-              
-              <Fab color="primary" onClick={() => append({ value: "" })}>
-                <Icon>add</Icon>
-              </Fab>
+              {fields.length < 5 && (
+                <Fab color="primary" onClick={() => append({ value: "" })}>
+                  <Icon>add</Icon>
+                </Fab>
+              )}
             </Box>
           </Grid>
 
@@ -140,7 +147,8 @@ function Create() {
           size="large"
           sx={{ background: "#E0BFE6", width: "30%", marginTop: "30px" }}
           variant="contained"
-          type="submit">
+          type="submit"
+        >
           등록
         </Button>
       </Container>
