@@ -43,7 +43,7 @@ function NovelDetail() {
           <Button variant="contained">더 보기</Button>
         </Grid>
         <Grid item xs={12}>
-          <Card>
+          <Card >
             <CardContent>
               <Box display={"flex"} justifyContent="flex-start" mb={2}>
                 <Typography color="text.secondary">#{11}이 될 예정</Typography>

@@ -3,7 +3,6 @@ import {
   Button,
   Card,
   CardContent,
-  CardActions,
   Chip,
   Grid,
   Icon,
@@ -100,11 +99,14 @@ function Main({ type }: { type: mainType }) {
         </form>
       </Card>
 
-      <Typography color="#9A44AA" mt={5}>
+      {/* <Box display="flex" alignItems="flex-start" mt={5} p={2} sx={{width:"100%", background:"#E0BFE6"}}> */}
+      <Typography mt={5} variant="h5" color="#9A44AA" >
         {(type === "main" || type === "keyword") && "인기 릴레이 소설"}
         {type === "search" && `${word}에 대한 검색 결과`}
         {type === "keywordSearch" && `키워드 ${word}에 대한 검색 결과`}
       </Typography>
+      {/* </Box> */}
+      
       <Grid container spacing={2}>
         {Array(10)
           .fill(0)
@@ -114,7 +116,7 @@ function Main({ type }: { type: mainType }) {
               keyword={["키워드1", "키워드2", "키워드3"]}
               type={
                 i % 3 === 0
-                  ? "5자"
+                  ? "한 단어 (5자)"
                   : i % 3 === 1
                   ? "한 문장 (30자)"
                   : "한 문단 (200자)"
@@ -128,7 +130,7 @@ function Main({ type }: { type: mainType }) {
           ))}
       </Grid>
 
-      <Typography color="#9A44AA" mt={5}>
+      <Typography mt={5} variant="h5" color="#9A44AA" >
         릴레이 소설 작성하기
       </Typography>
       <Grid container spacing={2}>
@@ -137,7 +139,7 @@ function Main({ type }: { type: mainType }) {
             sx={{
               cursor: "pointer",
               minWidth: 275,
-              background: "white",
+              background: "#EFD7F3",
               border: "solid",
               borderRadius: 5,
               color: "black",
@@ -148,12 +150,10 @@ function Main({ type }: { type: mainType }) {
               <Typography variant="h5" component="div">
                 한 단어 이어쓰기
               </Typography>
-              <Typography variant="body2">
+              <Typography mb={3} variant="body2">
                 5자 이내의 내용을 릴레이로 이어서 작성합니다.
               </Typography>
-              <Typography variant="h5" component="div">
-                WORD RELAY
-              </Typography>
+              <img height='90' src="wordRelay.png" />
             </CardContent>
           </Card>
         </Grid>
@@ -162,7 +162,7 @@ function Main({ type }: { type: mainType }) {
             sx={{
               cursor: "pointer",
               minWidth: 275,
-              background: "white",
+              background: "#EFD7F3",
               border: "solid",
               borderRadius: 5,
               color: "black",
@@ -173,12 +173,10 @@ function Main({ type }: { type: mainType }) {
               <Typography variant="h5" component="div">
                 한 문장 이어쓰기
               </Typography>
-              <Typography variant="body2">
+              <Typography mb={3} variant="body2">
                 30자 이내의 내용을 릴레이로 이어서 작성합니다.
               </Typography>
-              <Typography variant="h5" component="div">
-                SENTENCE RELAY
-              </Typography>
+              <img height='90' src="sentenceRalay.png" />
             </CardContent>
           </Card>
         </Grid>
@@ -187,7 +185,7 @@ function Main({ type }: { type: mainType }) {
             sx={{
               cursor: "pointer",
               minWidth: 275,
-              background: "white",
+              background: "#EFD7F3",
               border: "solid",
               borderRadius: 5,
               color: "black",
@@ -198,12 +196,10 @@ function Main({ type }: { type: mainType }) {
               <Typography variant="h5" component="div">
                 한 문단 이어쓰기
               </Typography>
-              <Typography variant="body2">
+              <Typography mb={3} variant="body2">
                 200자 이내의 내용을 릴레이로 이어서 작성합니다.
               </Typography>
-              <Typography variant="h5" component="div">
-                PARAGRAPH RELAY
-              </Typography>
+              <img height='90' src="paragraphRelay.png" />
             </CardContent>
           </Card>
         </Grid>

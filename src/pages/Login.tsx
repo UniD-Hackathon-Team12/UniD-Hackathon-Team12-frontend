@@ -21,8 +21,8 @@ function Login() {
                         <TextField id="outlined-basic" sx={{width:"60%"}} variant="outlined" />
                     </Grid>
                 </Grid>
-                <Button sx={{background:"#E0BFE6", width:"50%", marginTop:"80px"}} variant="contained">로그인</Button>
-                <Typography mt={5} color="primary">계정이 없으신가요?</Typography>
+                <Button size="large" sx={{background:"#E0BFE6", width:"50%", marginTop:"80px"}} variant="contained">로그인</Button>
+                <Typography sx={{cursor:"pointer"}} mt={5} color="#9A44AA">계정이 없으신가요?</Typography>
             </Container>
         </div>
     );

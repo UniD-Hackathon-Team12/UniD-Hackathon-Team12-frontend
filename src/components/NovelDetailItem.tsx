@@ -20,11 +20,11 @@ function NovelDetailItem(props: NovelDetailItemProps) {
     <Grid item xs={12}>
       <Card>
         <CardContent>
-          <Box display={"flex"} justifyContent="space-between" mb={1}>
+          <Box display={"flex"} justifyContent="space-between" mb={3}>
             <Typography color="text.secondary">#{number}</Typography>
             <Typography color="text.secondary">{maker} 님</Typography>
           </Box>
-          <Typography>{content}</Typography>
+          <Typography align="left">{content}</Typography>
         </CardContent>
       </Card>
     </Grid>

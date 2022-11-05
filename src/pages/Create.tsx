@@ -136,10 +136,10 @@ function Create() {
           </Grid>
         </Grid>
         <Button
+          size="large"
           sx={{ background: "#E0BFE6", width: "30%", marginTop: "30px" }}
           variant="contained"
-          type="submit"
-        >
+          type="submit">
           등록
         </Button>
       </Container>

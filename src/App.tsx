@@ -12,6 +12,9 @@ import { createTheme, ThemeProvider } from "@mui/material";
 import Routers from "./Routers";
 
 const theme = createTheme({
+  typography:{
+    fontFamily:"neverland_l",
+  },
   palette: {
     primary: {
       main: "#E0BFE6",
