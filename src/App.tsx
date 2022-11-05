@@ -5,14 +5,13 @@ import NavBar from "./components/NavBar";
 import Main from "./pages/Main";
 import NovelDetail from "./pages/NovelDetail";
 import MyPage from "./pages/MyPage";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import Create from "./pages/Create";
 
 function App() {
   return (
     <div className="App">
-      <NavBar />
-      <Create name="asdf" />
-      {/* <NovelDetail /> */}
     </div>
   );
 }

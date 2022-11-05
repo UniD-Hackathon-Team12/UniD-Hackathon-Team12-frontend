@@ -6,13 +6,14 @@ function NavBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar sx={{ justifyContent: "space-between" }}>
-          <Typography variant="h6" component="div" sx={{}}>
+        <Toolbar sx={{ height: 100, background:"#E0BFE6", justifyContent: "space-between" }}>
+          {/* <Typography variant="h6" component="div" sx={{}}>
             RELAY
-          </Typography>
+          </Typography> */}
+          <img height='90' src="logo.png" />
           <Box>
-            <Button color="inherit">로그인</Button>
-            <Button color="inherit">회원가입</Button>
+            <Button size="large" style={{ background:"white", border:"solid", borderRadius:10, color:"black"}}>로그인</Button>
+            <Button size="large" style={{background:"white", border:"solid", borderRadius:10, color:"black"}}>회원가입</Button>
           </Box>
         </Toolbar>
       </AppBar>
