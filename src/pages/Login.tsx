@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, TextField, Stack,Container, Typography, Grid } from '@mui/material';
+import { Link } from "react-router-dom";
 
 
 function Login() {
@@ -22,7 +23,9 @@ function Login() {
                     </Grid>
                 </Grid>
                 <Button size="large" sx={{background:"#E0BFE6", width:"50%", marginTop:"80px"}} variant="contained">로그인</Button>
-                <Typography sx={{cursor:"pointer"}} mt={5} color="#9A44AA">계정이 없으신가요?</Typography>
+                <Link to="/Signup">
+                    <Typography sx={{cursor:"pointer"}} mt={5} color="#9A44AA">계정이 없으신가요?</Typography>
+                </Link>
             </Container>
         </div>
     );

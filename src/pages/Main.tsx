@@ -155,7 +155,7 @@ function Main({ type }: { type: mainType }) {
                 <Typography mb={3} variant="body2">
                   5자 이내의 내용을 릴레이로 이어서 작성합니다.
                 </Typography>
-                <img height='90' src="wordRelay.png" />
+                <img style={{width:'25vw'}} src="wordRelay.png" />
               </CardContent>
             </Card>
           </Link>
@@ -205,7 +205,7 @@ function Main({ type }: { type: mainType }) {
                 <Typography mb={3} variant="body2">
                   200자 이내의 내용을 릴레이로 이어서 작성합니다.
                 </Typography>
-                <img height='90' src="paragraphRelay.png" />
+                <img style={{width:'25vw'}} src="paragraphRelay.png" />
               </CardContent>
             </Card>
           </Link>
