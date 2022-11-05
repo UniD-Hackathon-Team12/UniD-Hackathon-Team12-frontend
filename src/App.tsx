@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Create from "./pages/Create";
 import { createTheme, ThemeProvider } from "@mui/material";
+import Routers from "./Routers";
 
 const theme = createTheme({
   typography:{
@@ -25,8 +26,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <NavBar />
-        <NovelDetail />
+        <Routers />
       </div>
     </ThemeProvider>
   );

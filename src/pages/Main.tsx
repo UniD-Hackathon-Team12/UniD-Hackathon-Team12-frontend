@@ -10,9 +10,20 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import KeywordSearch from "../components/KeywordSearch";
 import NovelCard from "../components/NovelCard";
 
-function Main() {
+export type mainType = "main" | "search" | "keyword" | "keywordSearch";
+
+function Main({ type }: { type: mainType }) {
+  const useFormReturn = useForm({
+    defaultValues: { keyword: { value: "" }, word: "" },
+  });
+  const a = useParams();
+  const { word = null } = a;
+  const navigate = useNavigate();
   return (
     <Box
       paddingX={3}
@@ -23,42 +34,79 @@ function Main() {
       alignItems="flex-start"
     >
       <Card sx={{ width: "100%" }}>
-        <Box paddingX={3} pt={3} display="flex" gap={3}>
-          <TextField
-            id="standard-basic"
-            label="검색하기"
-            variant="standard"
-            fullWidth
-          />
-          <Button variant="contained">
-            <Icon>search</Icon>
-          </Button>
-        </Box>
-        <Box
-          paddingX={3}
-          pb={3}
-          mt={2}
-          display="flex"
-          gap={1}
-          alignItems="center"
-          flexWrap={"wrap"}
+        <form
+          onSubmit={useFormReturn.handleSubmit((t) => {
+            if (type === "keyword" || type === "keywordSearch") {
+              const { keyword = { value: "" } } = t;
+              const { value } = keyword;
+              if (value.trim().length === 0) return;
+              navigate(`/keyword/search/${value.trim()}`);
+            } else {
+              const { word = "" } = t;
+              if (word.trim().length === 0) return;
+              navigate(`/search/${word.trim()}`);
+            }
+          })}
         >
-          <Typography mr={1} flexShrink={0}>
-            인기 키워드
-          </Typography>
-          {Array(5)
-            .fill(0)
-            .map((_, i) => (
-              <Chip onClick={() => {}} label={`키워드${i}`}></Chip>
-            ))}
-        </Box>
+          <Box paddingX={3} pt={3} display="flex" gap={3}>
+            {type === "keyword" || type === "keywordSearch" ? (
+              <KeywordSearch useForm={useFormReturn} id="keyword" />
+            ) : (
+              <TextField
+                {...useFormReturn.register("word")}
+                label="검색하기"
+                variant="standard"
+                fullWidth
+              />
+            )}
+            <Button variant="contained" type="submit">
+              <Icon>search</Icon>
+            </Button>
+          </Box>
+          <Box
+            paddingX={3}
+            pb={3}
+            mt={2}
+            display="flex"
+            gap={1}
+            alignItems="center"
+            flexWrap={"wrap"}
+          >
+            <Typography mr={1} flexShrink={0}>
+              인기 키워드
+            </Typography>
+            {Array(5)
+              .fill(0)
+              .map((_, i) => (
+                <Link to={`/keyword/search/${`키워드${i}`}`}>
+                  <Chip onClick={() => {}} label={`키워드${i}`}></Chip>
+                </Link>
+              ))}
+            <Link
+              to={
+                type === "keyword" || type === "keywordSearch"
+                  ? "/"
+                  : "/keyword"
+              }
+            >
+              <Button variant="contained" sx={{ marginLeft: "12px" }}>
+                {type === "keyword" || type === "keywordSearch"
+                  ? "내용 검색으로"
+                  : "키워드 검색으로"}
+              </Button>
+            </Link>
+          </Box>
+        </form>
       </Card>
 
       {/* <Box display="flex" alignItems="flex-start" mt={5} p={2} sx={{width:"100%", background:"#E0BFE6"}}> */}
-        <Typography mt={5} variant="h5" color="#9A44AA" >
-          인기 릴레이 소설
-        </Typography>
+      <Typography mt={5} variant="h5" color="#9A44AA" >
+        {(type === "main" || type === "keyword") && "인기 릴레이 소설"}
+        {type === "search" && `${word}에 대한 검색 결과`}
+        {type === "keywordSearch" && `키워드 ${word}에 대한 검색 결과`}
+      </Typography>
       {/* </Box> */}
+      
       <Grid container spacing={2}>
         {Array(10)
           .fill(0)
