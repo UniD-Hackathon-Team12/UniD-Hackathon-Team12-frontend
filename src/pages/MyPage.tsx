@@ -11,7 +11,7 @@ function MyPage() {
 
   return (
     <Box display={"flex"} flexDirection="column" my={3} gap={3} px={3}>
-      <Typography variant="h4">{`${Id} 님의 마이페이지`}</Typography>
+      <Typography mt={5} mb={3} variant="h4">{`${Id} 님의 마이페이지`}</Typography>
       <ButtonGroup fullWidth>
         <Button
           onClick={() => setType("written")}
