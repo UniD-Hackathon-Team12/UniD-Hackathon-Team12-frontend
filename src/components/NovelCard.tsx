@@ -21,6 +21,7 @@ export interface NovelCardProps {
   maxCount: number;
   isFinished?: boolean;
   isLike?: boolean;
+  forDetail?: boolean;
 }
 
 function NovelCard(props: NovelCardProps) {
@@ -33,9 +34,10 @@ function NovelCard(props: NovelCardProps) {
     currentCount,
     maxCount,
     isFinished = false,
+    forDetail = false,
   } = props;
   return (
-    <Grid item xs={12} sm={6} lg={4}>
+    <Grid item xs={12} sm={forDetail ? 12 : 6} lg={forDetail ? 12 : 4}>
       <Card>
         <CardContent>
           <Box
@@ -79,9 +81,11 @@ function NovelCard(props: NovelCardProps) {
             ))}
           </Box>
         </CardContent>
-        <CardActions>
-          <Button>자세히 보기</Button>
-        </CardActions>
+        {!forDetail && (
+          <CardActions>
+            <Button>자세히 보기</Button>
+          </CardActions>
+        )}
       </Card>
     </Grid>
   );

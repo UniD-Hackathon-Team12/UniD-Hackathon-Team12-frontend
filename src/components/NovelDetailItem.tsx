@@ -1,16 +1,33 @@
-import { Grid } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Card,
+  CardContent,
+  CardHeader,
+  Grid,
+  Typography,
+} from "@mui/material";
 
 export interface NovelDetailItemProps {
-    storyItem: string;
+  maker: string;
+  number: number;
+  content: string;
 }
 
 function NovelDetailItem(props: NovelDetailItemProps) {
-    const {
-        storyItem,
-    } = props;
-    return (
-        <Grid item xs={12} sm={6} lg={4}>
-        </Grid>
-    );
+  const { maker, number, content } = props;
+  return (
+    <Grid item xs={12}>
+      <Card>
+        <CardContent>
+          <Box display={"flex"} justifyContent="space-between" mb={1}>
+            <Typography color="text.secondary">#{number}</Typography>
+            <Typography color="text.secondary">{maker} 님</Typography>
+          </Box>
+          <Typography>{content}</Typography>
+        </CardContent>
+      </Card>
+    </Grid>
+  );
 }
 export default NovelDetailItem;
