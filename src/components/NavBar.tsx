@@ -7,12 +7,9 @@ function NavBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar sx={{ height: 100, background:"#E0BFE6", justifyContent: "space-between" }}>
-          {/* <Typography variant="h6" component="div" sx={{}}>
-            RELAY
-          </Typography> */}
           <img height='90' src="logo.png" />
           <Box>
-            <Button size="large" style={{ background:"white", border:"solid", borderRadius:10, color:"black"}}>로그인</Button>
+            <Button size="large" style={{ marginRight:"10px",background:"white", border:"solid", borderRadius:10, color:"black"}}>로그인</Button>
             <Button size="large" style={{background:"white", border:"solid", borderRadius:10, color:"black"}}>회원가입</Button>
           </Box>
         </Toolbar>

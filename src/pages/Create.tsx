@@ -21,6 +21,7 @@ import { useFieldArray, useForm } from "react-hook-form";
 import KeywordSearch from "../components/KeywordSearch";
 
 function Create() {
+
   const [KeywordList, setKeywordList] = useState([]);
   const useFormReturn = useForm();
   const { control, register, handleSubmit } = useFormReturn;
