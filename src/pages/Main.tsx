@@ -15,8 +15,15 @@ import NovelCard from "../components/NovelCard";
 
 function Main() {
   return (
-    <Box paddingX={3} my={3} gap={3} display="flex" flexDirection={"column"} alignItems="flex-start">
-      <Card sx={{width:"100%"}}>
+    <Box
+      paddingX={3}
+      my={3}
+      gap={3}
+      display="flex"
+      flexDirection={"column"}
+      alignItems="flex-start"
+    >
+      <Card sx={{ width: "100%" }}>
         <Box paddingX={3} pt={3} display="flex" gap={3}>
           <TextField
             id="standard-basic"
@@ -48,7 +55,9 @@ function Main() {
         </Box>
       </Card>
 
-      <Typography color="#9A44AA" mt={5}>인기 릴레이 소설</Typography>
+      <Typography color="#9A44AA" mt={5}>
+        인기 릴레이 소설
+      </Typography>
       <Grid container spacing={2}>
         {Array(10)
           .fill(0)
@@ -72,13 +81,25 @@ function Main() {
           ))}
       </Grid>
 
-      <Typography color="#9A44AA" mt={5}>릴레이 소설 작성하기</Typography>
+      <Typography color="#9A44AA" mt={5}>
+        릴레이 소설 작성하기
+      </Typography>
       <Grid container spacing={2}>
-        <Grid item xs={4}>
-          <Card sx={{ cursor:"pointer", minWidth: 275, background:"white", border:"solid", borderRadius:5, color:"black"}}>
+        <Grid item xs={12} md={4}>
+          <Card
+            sx={{
+              cursor: "pointer",
+              minWidth: 275,
+              background: "white",
+              border: "solid",
+              borderRadius: 5,
+              color: "black",
+              height: "100%",
+            }}
+          >
             <CardContent>
               <Typography variant="h5" component="div">
-              한 단어 이어쓰기
+                한 단어 이어쓰기
               </Typography>
               <Typography variant="body2">
                 5자 이내의 내용을 릴레이로 이어서 작성합니다.
@@ -89,8 +110,18 @@ function Main() {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={4}>
-          <Card sx={{ cursor:"pointer", minWidth: 275, background:"white", border:"solid", borderRadius:5, color:"black"}}>
+        <Grid item xs={12} md={4}>
+          <Card
+            sx={{
+              cursor: "pointer",
+              minWidth: 275,
+              background: "white",
+              border: "solid",
+              borderRadius: 5,
+              color: "black",
+              height: "100%",
+            }}
+          >
             <CardContent>
               <Typography variant="h5" component="div">
                 한 문장 이어쓰기
@@ -104,8 +135,18 @@ function Main() {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={4}>
-          <Card sx={{ cursor:"pointer", minWidth: 275, background:"white", border:"solid", borderRadius:5, color:"black"}}>
+        <Grid item xs={12} md={4}>
+          <Card
+            sx={{
+              cursor: "pointer",
+              minWidth: 275,
+              background: "white",
+              border: "solid",
+              borderRadius: 5,
+              color: "black",
+              height: "100%",
+            }}
+          >
             <CardContent>
               <Typography variant="h5" component="div">
                 한 문단 이어쓰기
