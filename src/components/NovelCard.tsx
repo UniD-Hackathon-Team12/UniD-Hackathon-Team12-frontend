@@ -12,6 +12,8 @@ import {
 import { Box } from "@mui/system";
 import React from "react";
 import { Link } from "react-router-dom";
+import { NovelLikeAPI } from "../api";
+import { useLogin } from "../useLogin";
 
 export interface NovelCardProps {
   title: string;
@@ -39,6 +41,7 @@ function NovelCard(props: NovelCardProps) {
     forDetail = false,
     id = null,
   } = props;
+  const { data: loginData } = useLogin();
   return (
     <Grid item xs={12} sm={forDetail ? 12 : 6} lg={forDetail ? 12 : 4}>
       <Card sx={{ height: "100%" }}>
@@ -60,7 +63,14 @@ function NovelCard(props: NovelCardProps) {
               label={like}
               variant="outlined"
               color="error"
-              onClick={() => {}}
+              onClick={async () => {
+                if (!id || !loginData?.login) return;
+                const res = await NovelLikeAPI(
+                  parseInt(`${id}`),
+                  loginData.data.user_id
+                );
+                if (res === null) alert("오류가 발생했습니다.");
+              }}
             />
           </Box>
           <Typography variant="h5">{title}</Typography>

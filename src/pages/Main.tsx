@@ -9,12 +9,18 @@ import {
   TextField,
   Typography,
   Container,
+  Fab,
 } from "@mui/material";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import useSWR from "swr";
-import { getFamousNovelAPI, getKeywordRankAPI } from "../api";
+import {
+  getFamousNovelAPI,
+  getKeywordRankAPI,
+  NovelContentSearchAPI,
+  NovelKeywordSearchAPI,
+} from "../api";
 import KeywordSearch from "../components/KeywordSearch";
 import NovelCard from "../components/NovelCard";
 import { novelTypeToText } from "./MyPage";
@@ -32,7 +38,14 @@ function Main({ type }: { type: mainType }) {
     (type === "keyword" || type === "main") && "/novel/all",
     () => getFamousNovelAPI()
   );
-  // const { data: searchData } = useSWR( type === 'search' && '/')
+  const { data: searchData } = useSWR(
+    type === "search" && `/search/${word}`,
+    () => NovelContentSearchAPI(word || "")
+  );
+  const { data: keywordSearchData } = useSWR(
+    type === "keywordSearch" && `/keyword/search/${word}`,
+    () => NovelKeywordSearchAPI(word || "")
+  );
   const { data: keywordData } = useSWR("/keyword/rank", () =>
     getKeywordRankAPI()
   );
@@ -143,7 +156,7 @@ function Main({ type }: { type: mainType }) {
       <Typography align="left" mt={10} mb={5} variant="h5" color="#9A44AA">
         릴레이 소설 작성하기
       </Typography>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} mb={10}>
         <Grid item xs={12} md={4}>
           <Link to="/novel-kind/word">
             <Card
@@ -220,6 +233,20 @@ function Main({ type }: { type: mainType }) {
           </Link>
         </Grid>
       </Grid>
+
+      <Box
+        position={"sticky"}
+        bottom={30}
+        display="flex"
+        justifyContent={"flex-end"}
+        pr={3}
+      >
+        <Link to="/create">
+          <Fab color="primary" aria-label="add">
+            <Icon>edit</Icon>
+          </Fab>
+        </Link>
+      </Box>
     </Container>
   );
 }

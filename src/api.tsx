@@ -163,3 +163,27 @@ export const getKeywordSearchAPI = async (keyword: string) => {
   if (!res?.data?.isSuccess) return [];
   return res.data.result;
 };
+
+export const NovelLikeAPI = async (novelId: number, userId: number) => {
+  const res = await axios.patch(`/novel/${novelId}/like`, {
+    user_id: userId,
+  });
+  if (!res?.data?.isSuccess) return null;
+  return true;
+};
+
+export const NovelKeywordSearchAPI = async (keyword: string) => {
+  const res = await axios.post<ResponseI<NovelInfoI[]>>("/novel/1/search", {
+    keyword: keyword,
+  });
+  if (!res?.data?.isSuccess) return null;
+  return res.data.result;
+};
+
+export const NovelContentSearchAPI = async (content: string) => {
+  const res = await axios.post<ResponseI<NovelInfoI[]>>("/novel/2/search", {
+    r_content: content,
+  });
+  if (!res?.data?.isSuccess) return null;
+  return res.data.result;
+};

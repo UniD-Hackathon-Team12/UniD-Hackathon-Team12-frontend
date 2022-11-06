@@ -140,9 +140,7 @@ function NovelDetail() {
             if (lastRef?.current) lastRef.current.scrollIntoViewIfNeeded();
           }}
         >
-          <Link to="/create">
-            <Icon>edit</Icon>
-          </Link>
+          <Icon>edit</Icon>
         </Fab>
       </Box>
     </div>
