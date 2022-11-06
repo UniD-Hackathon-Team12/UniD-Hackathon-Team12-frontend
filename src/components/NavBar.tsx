@@ -35,18 +35,20 @@ function NavBar() {
                   마이 페이지
                 </Button>
               </Link>
-              <Button
-                size="large"
-                style={{
-                  background: "white",
-                  border: "solid",
-                  borderRadius: 10,
-                  color: "black",
-                }}
-                onClick={() => setLoginInfo()}
-              >
-                로그아웃
-              </Button>
+              <Link to="/">
+                <Button
+                  size="large"
+                  style={{
+                    background: "white",
+                    border: "solid",
+                    borderRadius: 10,
+                    color: "black",
+                  }}
+                  onClick={() => setLoginInfo()}
+                >
+                  로그아웃
+                </Button>
+              </Link>
             </Box>
           ) : (
             <Box>
