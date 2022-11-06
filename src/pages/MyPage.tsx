@@ -2,16 +2,37 @@ import { Box, Button, ButtonGroup, Grid, Typography } from "@mui/material";
 import SelectedListItem from "../components/SelectedListItem";
 import React, { useState, useEffect } from "react";
 import NovelCard from "../components/NovelCard";
+import { useLogin, useLoginCheck } from "../useLogin";
+import useSWR from "swr";
+import { getMyPageAPI } from "../api";
+import { novelType } from "./NovelKind";
 
 export type myPageType = "written" | "participated" | "liked";
+
+export const novelTypeToText: { [x in novelType]: string } = {
+  word: "한 단어 (5자)",
+  sentence: "한 문장 (30자)",
+  paragraph: "한 문단 (200자)",
+};
 
 function MyPage() {
   const [Id, setId] = useState("");
   const [Type, setType] = useState<myPageType>("written");
+  const { data: loginData } = useLogin();
+  const loginCheck = useLoginCheck();
+  const { data } = useSWR(
+    "/user/mypage",
+    loginCheck(() => getMyPageAPI())
+  );
 
+  if (!loginData?.login || !data) return <></>;
   return (
     <Box display={"flex"} flexDirection="column" my={3} gap={3} px={3}>
-      <Typography mt={5} mb={3} variant="h4">{`${Id} 님의 마이페이지`}</Typography>
+      <Typography
+        mt={5}
+        mb={3}
+        variant="h4"
+      >{`${loginData.data.nickname} 님의 마이페이지`}</Typography>
       <ButtonGroup fullWidth>
         <Button
           onClick={() => setType("written")}
@@ -33,26 +54,32 @@ function MyPage() {
         </Button>
       </ButtonGroup>
       <Grid container spacing={2}>
-        {Array(10)
-          .fill(0)
-          .map((_, i) => (
+        {data[Type].map(
+          (
+            {
+              novel_id,
+              category,
+              n_content,
+              like_count,
+              relay_count,
+              active,
+              max_num,
+            },
+            i
+          ) => (
             <NovelCard
-              title={`첫번째 문장입니다 123123 ${i}`}
+              title={n_content}
               keyword={["키워드1", "키워드2", "키워드3"]}
-              type={
-                i % 3 === 0
-                  ? "5자"
-                  : i % 3 === 1
-                  ? "한 문장 (30자)"
-                  : "한 문단 (200자)"
-              }
-              maxCount={300}
-              currentCount={i * 10}
-              like={100}
-              isFinished={i % 2 === 0}
-              isLike={i % 2 === 1}
+              type={novelTypeToText[category]}
+              maxCount={max_num}
+              currentCount={relay_count}
+              like={like_count}
+              isFinished={!active}
+              id={novel_id}
+              //   isLike={i % 2 === 1}
             />
-          ))}
+          )
+        )}
       </Grid>
     </Box>
   );

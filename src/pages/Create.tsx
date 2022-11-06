@@ -19,13 +19,17 @@ import {
 import InputAdornment from "@mui/material/InputAdornment";
 import { useFieldArray, useForm } from "react-hook-form";
 import KeywordSearch from "../components/KeywordSearch";
+import { createNovelAPI } from "../api";
+import { novelType } from "./NovelKind";
+import { useLogin } from "../useLogin";
 
 function Create() {
   const [KeywordList, setKeywordList] = useState([]);
+  const { data: loginData } = useLogin();
   const useFormReturn = useForm({
     defaultValues: {
       keyword: [{ value: "" }],
-      type: 5,
+      type: "word",
       maxCount: 30,
       firstStory: "",
     },
@@ -37,7 +41,19 @@ function Create() {
   });
 
   return (
-    <form onSubmit={handleSubmit((d) => console.log(d))}>
+    <form
+      onSubmit={handleSubmit(async (d) => {
+        if (!loginData?.login) return;
+        const { keyword, type, maxCount, firstStory } = d;
+        const res = await createNovelAPI({
+          category: d.type as novelType,
+          firstStory,
+          maxCount,
+          keyword: keyword.map((t) => t.value),
+          userId: loginData.data.user_id,
+        });
+      })}
+    >
       <Container fixed maxWidth="lg" sx={{ marginTop: "50px" }}>
         <Grid container alignItems="flex-start" spacing={5}>
           <Grid item xs={2} container direction="row" justifyContent="flex-end">
@@ -50,10 +66,10 @@ function Create() {
             direction="row"
             justifyContent="flex-start"
           >
-            <Select {...register("type")} defaultValue={5}>
-              <MenuItem value={5}>한 글자 (5자)</MenuItem>
-              <MenuItem value={30}>한 문장 (30자)</MenuItem>
-              <MenuItem value={200}>한 문단 (200자)</MenuItem>
+            <Select {...register("type")} defaultValue="word">
+              <MenuItem value="word">한 글자 (5자)</MenuItem>
+              <MenuItem value="sentence">한 문장 (30자)</MenuItem>
+              <MenuItem value="paragraph">한 문단 (200자)</MenuItem>
             </Select>
           </Grid>
 

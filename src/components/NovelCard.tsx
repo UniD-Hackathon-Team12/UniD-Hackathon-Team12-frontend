@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export interface NovelCardProps {
   title: string;
@@ -23,6 +23,7 @@ export interface NovelCardProps {
   isFinished?: boolean;
   isLike?: boolean;
   forDetail?: boolean;
+  id?: string | number;
 }
 
 function NovelCard(props: NovelCardProps) {
@@ -36,10 +37,11 @@ function NovelCard(props: NovelCardProps) {
     maxCount,
     isFinished = false,
     forDetail = false,
+    id = null,
   } = props;
   return (
     <Grid item xs={12} sm={forDetail ? 12 : 6} lg={forDetail ? 12 : 4}>
-      <Card>
+      <Card sx={{ height: "100%" }}>
         <CardContent>
           <Box
             display={"flex"}
@@ -58,7 +60,7 @@ function NovelCard(props: NovelCardProps) {
               label={like}
               variant="outlined"
               color="error"
-              onClick={() => { }}
+              onClick={() => {}}
             />
           </Box>
           <Typography variant="h5">{title}</Typography>
@@ -78,17 +80,19 @@ function NovelCard(props: NovelCardProps) {
               <Chip label={`${currentCount} / ${maxCount}`} color="primary" />
             )}
             {keyword.map((k, i) => (
-              <Chip label={k} onClick={() => { }}></Chip>
+              <Chip label={k} onClick={() => {}}></Chip>
             ))}
           </Box>
         </CardContent>
         {!forDetail && (
           <CardActions>
-            <Link to='/novel-detail'><Button sx={{color:"#9A44AA"}}> 자세히 보기</Button></Link>
+            <Link to={id === null ? "" : `/novel-detail/${id}`}>
+              <Button sx={{ color: "#9A44AA" }}> 자세히 보기</Button>
+            </Link>
           </CardActions>
         )}
       </Card>
-    </Grid >
+    </Grid>
   );
 }
 

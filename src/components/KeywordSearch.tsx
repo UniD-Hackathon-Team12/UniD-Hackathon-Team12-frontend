@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useController, UseFormReturn } from "react-hook-form";
+import { getKeywordRankAPI, getKeywordSearchAPI } from "../api";
 
 interface Film {
   title: string;
@@ -43,10 +44,11 @@ export default function KeywordSearch({
     }
 
     (async () => {
-      await sleep(1e3); // For demo purposes.
+      // await sleep(1e3); // For demo purposes.
+      const data = await getKeywordRankAPI();
 
-      if (active) {
-        setOptions([...topFilms]);
+      if (active && data) {
+        setOptions([...data.map((t) => ({ title: t.keywords, year: 1 }))]);
       }
     })();
 
